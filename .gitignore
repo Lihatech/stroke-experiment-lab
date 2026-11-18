@@ -1,7 +1,8 @@
 .venv/
 __pycache__/
 runs/
-data/
+data/*
+!data/nhanes-stroke-v1.csv
 recordnings/
 stroke-source.zip
 .env

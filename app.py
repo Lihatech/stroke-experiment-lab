@@ -1,5 +1,6 @@
 import hmac
 import json
+import logging
 import os
 from datetime import datetime
 from uuid import uuid4
@@ -101,6 +102,7 @@ if database_configured():
         if restored_count:
             st.toast(f"Restored {restored_count} saved experiment(s) from the database.")
     except Exception:
+        logging.exception("Database synchronization failed")
         st.warning("The database is temporarily unavailable; local results still work for this session.")
 
 setup, results, comparison, plots = st.tabs([

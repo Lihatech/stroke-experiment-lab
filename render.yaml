@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: stroke-experiment-lab
+    runtime: python
+    plan: free
+    healthCheckPath: /_stcore/health
+    buildCommand: pip install --upgrade pip && pip install "torch>=2.6,<3" --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
